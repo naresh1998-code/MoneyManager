@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoneyManager.Views.HomePage"
+             Title="Home"
+             IconImageSource="user_icon.png">
+
+    <ScrollView>
+        <StackLayout Spacing="20">
+
+
+            <!--Balance card-->
+            <Grid RowDefinitions="60,15,60" ColumnDefinitions="*,*">
+                <Label Text="Total Balance"  Grid.Row="0" Grid.Column="0" BackgroundColor="AliceBlue"/>
+                <Label Text="Binding TotalBalance}" Grid.Row="0" Grid.Column="1" BackgroundColor="Aqua"/>
+                <Label Text="Montly Income" Grid.Row="1" Grid.Column="0" FontSize="10" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="Beige"/>
+                <Label Text="Binding MonthlyIncome}" Grid.Row="2" Grid.Column="0" BackgroundColor="Blue"/>
+                <Label Text="Monthly Expense" Grid.Row="1" Grid.Column="1" FontSize="10" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="BurlyWood"/>
+                <Label Text="Binding MonthlyExpense}" Grid.Row="2" Grid.Column="1" BackgroundColor="Cyan"/>
+            </Grid>
+
+            <!--<Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
+                <Label BackgroundColor="AliceBlue"  Text="Binding TransactionCategory}" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Label BackgroundColor="DodgerBlue" Text="Binding AccountName}" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Label BackgroundColor="Goldenrod" Text="Binding TransactionAmount" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Label BackgroundColor="LawnGreen" Text="Binding TransactionRemark}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Label BackgroundColor="MediumSlateBlue" Text="11/22 11:12" Grid.Row="2" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            </Grid>-->
+
+            <!--Transaction details list view-->
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--Transaction details block design-->
+                            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
+                                <Label BackgroundColor="AliceBlue"  Text="Binding TransactionCategory}" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Label BackgroundColor="DodgerBlue" Text="Binding AccountName}" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Label BackgroundColor="Goldenrod" Text="Binding TransactionAmount" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Label BackgroundColor="LawnGreen" Text="Binding TransactionRemark}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Label BackgroundColor="MediumSlateBlue" Text="Binding TransactionDateTime" Grid.Row="2" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
