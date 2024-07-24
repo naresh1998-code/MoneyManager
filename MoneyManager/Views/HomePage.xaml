@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="MoneyManager.Views.HomePage"
+             x:DataType="viewModel:AccountTypesViewModel"
+             
              Title="Home"
-             IconImageSource="user_icon.png">
+             IconImageSource="user_icon.png"
+             xmlns:viewModel="clr-namespace:MoneyManager.ViewModels"
+             xmlns:model="clr-namespace:MoneyManager.Models"
+             xmlns:services="clr-namespace:MoneyManager.Services"
+             xmlns:view="clr-namespace:MoneyManager.Views">
 
     <ScrollView>
         <StackLayout Spacing="20">
 
 
+            <view:AccountTypeList/>
+
+            <Button 
+                Text="Get Account Types" 
+                Command="{Binding GetAccountTypesCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="8"/>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"/>
             <!--Balance card-->
             <Grid RowDefinitions="60,15,60" ColumnDefinitions="*,*">
                 <Label Text="Total Balance"  Grid.Row="0" Grid.Column="0" BackgroundColor="AliceBlue"/>

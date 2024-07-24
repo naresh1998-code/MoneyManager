@@ -1,7 +1,4 @@
-﻿using ObjCRuntime;
-using UIKit;
-
-namespace MoneyManager
+﻿namespace MoneyManager
 {
     public class Program
     {

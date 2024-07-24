@@ -1,6 +1,4 @@
-﻿using Foundation;
-
-namespace MoneyManager
+﻿namespace MoneyManager
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MoneyManager.Services;
 using MoneyManager.Views;
 
 namespace MoneyManager
@@ -39,7 +40,12 @@ namespace MoneyManager
                 return platformMessageHandler.GetHttpMessageHandler();
             });
 
+            //Register services AccountTypes
+            builder.Services.AddSingleton<AccountTypeServices>();
+            builder.Services.AddSingleton<AccountTypesViewModel>();
+            builder.Services.AddSingleton<AccountTypeList>();
 
+            // Add Pages
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<Login>();
             builder.Services.AddSingleton<TabbedMainPage>();

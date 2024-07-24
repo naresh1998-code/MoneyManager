@@ -46,7 +46,7 @@
                 </StackLayout>
             </Grid>
 
-            <Button x:Name="btnLogin" Text="Login" Clicked="Login_Clicked" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" MaximumWidthRequest="500" />
+            <Button x:Name="btnLogin" Text="Login"  Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" MaximumWidthRequest="500" />
         </Grid>
     </ScrollView>
 </ContentPage>

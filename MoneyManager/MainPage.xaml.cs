@@ -4,9 +4,12 @@
     {
         int count = 0;
 
-        public MainPage()
+        public MainPage(AccountTypesViewModel accountTypeViewModel)
         {
             InitializeComponent();
+
+            BindingContext = accountTypeViewModel;
+
         }
 
         private void OnCounterClicked(object sender, EventArgs e)

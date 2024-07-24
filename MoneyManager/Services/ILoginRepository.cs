@@ -1,6 +1,4 @@
-﻿using MoneyManager.Models;
-
-namespace MoneyManager.Services;
+﻿namespace MoneyManager.Services;
 
 internal interface ILoginRepository
 {

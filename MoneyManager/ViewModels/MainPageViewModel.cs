@@ -1,9 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using MoneyManager.Models;
-using MoneyManager.Services;
+﻿using MoneyManager.Services;
 using MoneyManager.Views;
-using System.Text.Json;
 
 namespace MoneyManager.ViewModels;
 

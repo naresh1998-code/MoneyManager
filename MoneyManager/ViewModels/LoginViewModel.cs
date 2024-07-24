@@ -1,9 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using MoneyManager.Services;
+﻿using MoneyManager.Services;
 using MoneyManager.Views;
 using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
 namespace MoneyManager.Models;
 

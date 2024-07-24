@@ -1,6 +1,4 @@
-﻿using MoneyManager.Models;
-
-namespace MoneyManager
+﻿namespace MoneyManager
 {
     public partial class App : Application
     {
