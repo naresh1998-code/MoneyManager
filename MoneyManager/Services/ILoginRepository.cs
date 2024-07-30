@@ -2,5 +2,5 @@
 
 internal interface ILoginRepository
 {
-    Task<User> Login(string email, string password);
+    Task<LoginResponseModel> Login(string email, string password);
 }

@@ -23,7 +23,7 @@ public partial class LoginViewModel : ObservableObject
         {
             if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password))
             {
-                User user = await loginService.Login(Email, Password);
+                LoginResponseModel user = await loginService.Login(Email, Password);
                 if (Preferences.ContainsKey(nameof(App.user)))
                 {
                     Preferences.Remove(nameof(App.user));

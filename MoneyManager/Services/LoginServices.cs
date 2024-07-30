@@ -4,17 +4,25 @@ namespace MoneyManager.Services;
 
 internal class LoginServices : ILoginRepository
 {
-    public async Task<User> Login(string email, string password)
+    public async Task<LoginResponseModel> Login(string email, string password)
     {
         try
         {
             var client = new HttpClient();
-            string url = $"https://localhost:5505/api/Login/{email}/{password}";
+            string url = "https://192.168.2.103:5001/login";
             client.BaseAddress = new Uri(url);
-            HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
+
+            LoginModel loginModel = new()
+            {
+                Email = email,
+                Password = password
+            };
+
+            HttpResponseMessage response = await client.PostAsJsonAsync(client.BaseAddress,loginModel);
+
             if (response.IsSuccessStatusCode)
             {
-                User? user = await response.Content.ReadFromJsonAsync<User>();
+                LoginResponseModel? user = await response.Content.ReadFromJsonAsync<LoginResponseModel>();
                 return await Task.FromResult(user!);
             }
             return null!;

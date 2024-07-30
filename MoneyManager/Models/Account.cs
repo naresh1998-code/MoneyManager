@@ -1,6 +1,8 @@
-﻿namespace MoneyManager.Models;
+﻿using System.Text.Json.Serialization;
 
-public class AccountsModel
+namespace MoneyManager.Models;
+
+public class Account
 {
     public int Account_id { get; set; }
     public string AccountName { get; set; }
@@ -9,5 +11,10 @@ public class AccountsModel
     public string Type { get; set; }
     public string? Remark { get; set; }
 
+}
+
+[JsonSerializable(typeof(List<Account>))]
+internal sealed partial class AccountContext : JsonSerializerContext
+{
 
 }

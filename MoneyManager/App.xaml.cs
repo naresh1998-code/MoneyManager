@@ -2,7 +2,7 @@
 {
     public partial class App : Application
     {
-        public static User user;
+        public static LoginResponseModel user;
 
         public App()
         {

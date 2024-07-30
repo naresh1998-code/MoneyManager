@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoneyManager.Views.Account"
+             Title="Account"
+             xmlns:model="clr-namespace:MoneyManager.Models"
+             xmlns:viewmodel="clr-namespace:MoneyManager.ViewModels"
+             x:DataType="viewmodel:AccountViewModel"
+             >
+    <VerticalStackLayout>
+        
+        <CollectionView ItemsSource="{Binding _accountList}" 
+                        SelectionMode="Single" 
+                        SelectionChanged="CollectionView_SelectionChanged"
+                        x:Name="accountCollection">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Account">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding AccountName}" />
+                        <Label Text="{Binding AccountNumber}" />
+                        <Label Text="{Binding BankName}" />
+                        <Label Text="{Binding Type}" />
+                        <Label Text="{Binding Remark}" FontSize="Micro" />
+                        <Line/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Get Accounts"
+                Command="{Binding GetAccountsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Margin="0,10,0,0"/>
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
+            <Label Text="Account Name =" Grid.Column="0" Grid.Row="0"/>
+            <Entry Text="" x:Name="accountNameEntry" Grid.Row="0" Grid.Column="1" />
+            <Label Text="Account Number =" Grid.Column="0" Grid.Row="1"/>
+            <Entry Text="" x:Name="accountNumberEntry" Grid.Row="1" Grid.Column="1" />
+            <Label Text="Bank Name =" Grid.Column="0" Grid.Row="2"/>
+            <Entry Text="" x:Name="accountBankNameEntry" Grid.Row="2" Grid.Column="1" />
+            <Label Text="Account Type =" Grid.Column="0" Grid.Row="3"/>
+            <Entry Text="" x:Name="accountTypeEntry" Grid.Row="3" Grid.Column="1" />
+            <Label Text="Account Remark =" Grid.Column="0" Grid.Row="4"/>
+            <Entry Text="" x:Name="accountRemarkEntry" Grid.Row="4" Grid.Column="1" />
+        </Grid>
+
+        <Button x:Name="UpdateAccountButton"
+                CommandParameter="{Binding _accountList}"
+                Command="{Binding UpdateAccountCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

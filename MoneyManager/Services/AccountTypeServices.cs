@@ -6,10 +6,10 @@ namespace MoneyManager.Services;
 public class AccountTypeServices
 {
     List<AccountType> _accountTypes = [];
-    HttpClient _httpClient;
-    public AccountTypeServices()
+    readonly HttpClient _httpClient;
+    public AccountTypeServices(HttpClient httpClient)
     {
-        _httpClient = new();
+        _httpClient = httpClient;
     }
 
 
@@ -20,7 +20,7 @@ public class AccountTypeServices
             return _accountTypes;
         try
         {
-            var response = await _httpClient.GetFromJsonAsync<List<AccountType>>("https://localhost:7009/MoneyManager/GetAccountTypes");
+            var response = await _httpClient.GetFromJsonAsync<List<AccountType>>("https://localhost:5106/MoneyManager/GetAccountTypes");
             _accountTypes = response!;
 
         }

@@ -31,14 +31,14 @@ namespace MoneyManager
             // Add HttpClient 
             builder.Services.AddHttpClient("custom-httpclient", httpClient =>
             {
-                var BaseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7009" : "https://localhost:7009";
+                var BaseAddress = "https://localhost:5106";
                 httpClient.BaseAddress = new Uri(BaseAddress);
-            })
-            .ConfigurePrimaryHttpMessageHandler(serviceProvider =>
-            {
-                var platformMessageHandler = serviceProvider.GetRequiredService<IPlatformHttpMessageHandler>();
-                return platformMessageHandler.GetHttpMessageHandler();
             });
+            //.ConfigurePrimaryHttpMessageHandler(serviceProvider =>
+            //{
+            //    var platformMessageHandler = serviceProvider.GetRequiredService<IPlatformHttpMessageHandler>();
+            //    return platformMessageHandler.GetHttpMessageHandler();
+            //});
 
             //Register services AccountTypes
             builder.Services.AddSingleton<AccountTypeServices>();
