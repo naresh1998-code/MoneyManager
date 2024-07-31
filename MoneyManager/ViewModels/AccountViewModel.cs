@@ -5,15 +5,20 @@ namespace MoneyManager.ViewModels;
 
 public partial class AccountViewModel : BaseViewModel
 {
+    // variable declerations
     public ObservableCollection<Account> _accountList { get; } = new(); // observable list for GetAccounts
 
     AccountServices _accountServices;
+
+    public Account selectedAccount = null!; // for storing selected account
 
     public AccountViewModel(AccountServices accountServices)
     {
         _accountServices = accountServices;
     }
 
+
+    // commands for conversation with API
     [RelayCommand]
     async Task GetAccounts()
     {
@@ -50,9 +55,9 @@ public partial class AccountViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    async Task UpdateAccount(AccountUpdate accountUpdate)
+    async Task UpdateAccount(Account account)
     {
-        await _accountServices.UpdateAccount(accountUpdate);
+        await _accountServices.UpdateAccount(account);
     }
 
     [RelayCommand]
@@ -60,4 +65,7 @@ public partial class AccountViewModel : BaseViewModel
     {
         await _accountServices.DeleteAccount(accountId);
     }
+
+    // commands for internal operation
+    
 }

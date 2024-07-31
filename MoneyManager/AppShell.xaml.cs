@@ -11,6 +11,7 @@ namespace MoneyManager
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(TabbedMainPage), typeof(TabbedMainPage));
             Routing.RegisterRoute(nameof(Login), typeof(Login));
+            Routing.RegisterRoute(nameof(AccountPage), typeof(AccountPage));
             //Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
 
         }

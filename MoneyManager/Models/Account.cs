@@ -4,14 +4,16 @@ namespace MoneyManager.Models;
 
 public class Account
 {
-    public int Account_id { get; set; }
-    public string AccountName { get; set; }
-    public string AccountNumber { get; set; }
-    public string BankName { get; set; }
-    public string Type { get; set; }
-    public string? Remark { get; set; }
+    public int accountId { get; set; }
+    public string accountType { get; set; }
+    public string accountName { get; set; }
+    public string bankName { get; set; }
+    public decimal balance { get; set; }
+    public string? remark { get; set; }
 
 }
+
+
 
 [JsonSerializable(typeof(List<Account>))]
 internal sealed partial class AccountContext : JsonSerializerContext

@@ -8,4 +8,9 @@ public partial class HomePage : ContentPage
 		InitializeComponent();
         BindingContext = accountTypeViewModel;
     }
+
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(AccountPage));
+    }
 }

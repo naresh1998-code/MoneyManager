@@ -8,6 +8,8 @@ namespace MoneyManager
     {
         public static MauiApp CreateMauiApp()
         {
+
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -40,10 +42,18 @@ namespace MoneyManager
             //    return platformMessageHandler.GetHttpMessageHandler();
             //});
 
-            //Register services AccountTypes
+            
+
+            //Register AccountTypes
             builder.Services.AddSingleton<AccountTypeServices>();
             builder.Services.AddSingleton<AccountTypesViewModel>();
             builder.Services.AddSingleton<AccountTypeList>();
+
+            //Register Account
+            builder.Services.AddSingleton<AccountServices>();
+            builder.Services.AddSingleton<AccountViewModel>();
+            builder.Services.AddSingleton<AccountPage>();
+
 
             // Add Pages
             builder.Services.AddSingleton<HomePage>();
