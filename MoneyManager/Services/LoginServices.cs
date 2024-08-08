@@ -1,15 +1,16 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace MoneyManager.Services;
 
 internal class LoginServices : ILoginRepository
 {
-    public async Task<LoginResponseModel> Login(string email, string password)
+    public async Task<LoginResponseModel?> Login(string email, string password)
     {
         try
         {
             var client = new HttpClient();
-            string url = "https://192.168.2.103:5001/login";
+            string url = "https://localhost:5106/login";
             client.BaseAddress = new Uri(url);
 
             LoginModel loginModel = new()
@@ -23,7 +24,7 @@ internal class LoginServices : ILoginRepository
             if (response.IsSuccessStatusCode)
             {
                 LoginResponseModel? user = await response.Content.ReadFromJsonAsync<LoginResponseModel>();
-                return await Task.FromResult(user!);
+                return user;
             }
             return null!;
 

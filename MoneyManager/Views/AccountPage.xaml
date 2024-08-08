@@ -4,18 +4,19 @@
              x:Class="MoneyManager.Views.AccountPage"
              Title="Account"
              xmlns:model="clr-namespace:MoneyManager.Models"
-             xmlns:viewmodel="clr-namespace:MoneyManager.ViewModels">
+             xmlns:viewmodel="clr-namespace:MoneyManager.ViewModels"
+             x:DataType="viewmodel:AccountViewModel">
+
+
     <ScrollView>
 
         <VerticalStackLayout>
-
-            <CollectionView 
-                        ItemsSource="{Binding _accountList}" 
-                        SelectionMode="Single" 
-                        SelectionChanged="accountCollection_SelectionChanged"
-                        x:Name="accountCollection">
+            <CollectionView ItemsSource="{Binding _accountList}" 
+                            SelectionMode="Single" 
+                            SelectedItem="{Binding SelectedAccount}"
+                            x:Name="accountCollection">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="model:Account">
                         <VerticalStackLayout>
                             <Label Text="{Binding accountName}" />
                             <Label Text="{Binding accountType}" />
@@ -35,21 +36,32 @@
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
                 <Label Text="Account Name =" Grid.Column="0" Grid.Row="0"/>
-                <Entry Text="{Binding selectedAccount.accountName}" x:Name="accountNameEntry" Grid.Row="0" Grid.Column="1" />
-                <Label Text="Bank Name =" Grid.Column="0" Grid.Row="2"/>
-                <Entry Text="{Binding selectedAccount.bankName}" x:Name="accountBankNameEntry" Grid.Row="2" Grid.Column="1" />
-                <Label Text="Account Type =" Grid.Column="0" Grid.Row="3"/>
-                <Entry Text="{Binding selectedAccount.accountType}" x:Name="accountTypeEntry" Grid.Row="3" Grid.Column="1" />
-                <Label Text="Account Balance =" Grid.Column="0" Grid.Row="4"/>
-                <Entry Text="{Binding selectedAccount.balance}" x:Name="accountBalanceEntry" Grid.Row="4" Grid.Column="1" />
+                <Entry Text="{Binding SelectedAccount.accountName}" x:Name="accountNameEntry" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Bank Name =" Grid.Column="0" Grid.Row="1"/>
+                <Entry Text="{Binding SelectedAccount.bankName}" x:Name="accountBankNameEntry" Grid.Row="1" Grid.Column="1" />
+                <Label Text="Account Type =" Grid.Column="0" Grid.Row="2"/>
+                <Entry Text="{Binding SelectedAccount.accountType}" x:Name="accountTypeEntry" Grid.Row="2" Grid.Column="1" />
+                <Label Text="Account Balance =" Grid.Column="0" Grid.Row="3"/>
+                <Entry Text="{Binding SelectedAccount.balance}" x:Name="accountBalanceEntry" Grid.Row="3" Grid.Column="1" />
                 <Label Text="Account Remark =" Grid.Column="0" Grid.Row="4"/>
-                <Entry Text="{Binding selectedAccount.remark}" x:Name="accountRemarkEntry" Grid.Row="4" Grid.Column="1" />
+                <Entry Text="{Binding SelectedAccount.remark}" x:Name="accountRemarkEntry" Grid.Row="4" Grid.Column="1" />
             </Grid>
             <!-- -->
             <Button x:Name="UpdateAccountButton"
                     Text="UpdateAccount"
-                CommandParameter="{Binding selectedAccount}"
-                Command="{Binding UpdateAccountCommand}"/>
+                CommandParameter="{Binding SelectedAccount}"
+                Command="{Binding UpdateAccountCommand}"
+                    Margin="0,0,0,10"/>
+            <!--Margin left bottom right top-->
+
+            <Button x:Name="DeleteAccount"
+                    Text="Delete Account"
+                    CommandParameter="{Binding SelectedAccount.accountId}"
+                    Command="{Binding DeleteAccountCommand}"/>
+            <Button x:Name="AddAccount"
+                    Text="Add Account"
+                    CommandParameter="{Binding SelectedAccount}"
+                    Command="{Binding AddAccountCommand}"/>
 
         </VerticalStackLayout>
     </ScrollView>

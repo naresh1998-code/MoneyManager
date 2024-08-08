@@ -2,36 +2,47 @@
 using MoneyManager.Views;
 using Newtonsoft.Json;
 
-namespace MoneyManager.Models;
+namespace MoneyManager.ViewModels;
 
-public partial class LoginViewModel : ObservableObject
+public partial class LoginViewModel : BaseViewModel
 {
     [ObservableProperty]
     private string _email = null!;
     [ObservableProperty]
     private string _password = null!;
 
-    readonly ILoginRepository loginService = new LoginServices();
+    readonly LoginServices loginService = new LoginServices();
 
     [RelayCommand]
-    public async void SignIn()
+    public async Task SignIn()
     {
         // To check if internet connection is available
         //if(Connectivity.Current.NetworkAccess == NetworkAccess.Internet) { }
+            if (IsBusy)
+                return;
 
         try
         {
+            IsBusy = true;
+
             if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password))
             {
-                LoginResponseModel user = await loginService.Login(Email, Password);
-                if (Preferences.ContainsKey(nameof(App.user)))
+                var user = await loginService.Login(Email, Password);
+                if (user != null)
                 {
-                    Preferences.Remove(nameof(App.user));
+                    if (Preferences.ContainsKey(nameof(App.user)))
+                    {
+                        Preferences.Remove(nameof(App.user));
+                    }
+                    string userDetails = JsonConvert.SerializeObject(user);
+                    Preferences.Set(nameof(App.user), userDetails);
+                    App.user = user;
+                    await Shell.Current.GoToAsync(nameof(HomePage));
                 }
-                string userDetails = JsonConvert.SerializeObject(user);
-                Preferences.Set(nameof(App.user), userDetails);
-                App.user = user;
-                await Shell.Current.GoToAsync(nameof(HomePage));
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "Invalid Login Details" , "Ok");
+                }
             }
 
         }
@@ -39,6 +50,10 @@ public partial class LoginViewModel : ObservableObject
         {
             await Shell.Current.DisplayAlert("Error", Ex.Message, "OK");
             return;
+        }
+        finally
+        {
+            IsBusy = false;
         }
 
     }

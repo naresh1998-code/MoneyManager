@@ -10,11 +10,13 @@ public partial class AccountViewModel : BaseViewModel
 
     AccountServices _accountServices;
 
+    [ObservableProperty]
     public Account selectedAccount = null!; // for storing selected account
 
     public AccountViewModel(AccountServices accountServices)
     {
         _accountServices = accountServices;
+        SelectedAccount = new Account();
     }
 
 
@@ -22,7 +24,7 @@ public partial class AccountViewModel : BaseViewModel
     [RelayCommand]
     async Task GetAccounts()
     {
-        if (IsBusy)
+         if (IsBusy)
             return;
 
         try
@@ -67,5 +69,5 @@ public partial class AccountViewModel : BaseViewModel
     }
 
     // commands for internal operation
-    
+
 }

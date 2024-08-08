@@ -54,10 +54,12 @@ namespace MoneyManager
             builder.Services.AddSingleton<AccountViewModel>();
             builder.Services.AddSingleton<AccountPage>();
 
+            builder.Services.AddSingleton<LoginModel>();
+            builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<Login>();
 
             // Add Pages
             builder.Services.AddSingleton<HomePage>();
-            builder.Services.AddSingleton<Login>();
             builder.Services.AddSingleton<TabbedMainPage>();
 
 #if DEBUG
