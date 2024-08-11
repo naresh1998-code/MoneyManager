@@ -11,7 +11,7 @@ public class AccountServices
     {
         _httpClient = new();
         _httpClient.BaseAddress = new Uri(baseurl);
-        _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", App.user.AccessToken);
+       // _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", App.user.AccessToken);
 
     }
 

@@ -1,12 +1,142 @@
-﻿
-using MoneyManager.Services;
-
-namespace MoneyManager.ViewModels;
+﻿namespace MoneyManager.ViewModels;
 
 public partial class AccountViewModel : BaseViewModel
 {
     // variable declerations
-    public ObservableCollection<Account> _accountList { get; } = new(); // observable list for GetAccounts
+    public ObservableCollection<Account> _accountList { get; } = new()
+    {
+        new Account()
+        {
+            accountId = 1,
+            accountName = "Main Account",
+            accountType = "current",
+            balance = 52000.10M,
+            bankName = "SBI",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 2,
+            accountName = "Home",
+            accountType = "saving",
+            balance = 12000.10M,
+            bankName = "Canara",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 3,
+            accountName = "Offer",
+            accountType = "saving",
+            balance = 100.10M,
+            bankName = "SBI",
+            remark = "red_down_right_arrow.png"
+        },new Account()
+        {
+            accountId = 1,
+            accountName = "Main Account",
+            accountType = "current",
+            balance = 52000.10M,
+            bankName = "SBI",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 2,
+            accountName = "Home",
+            accountType = "saving",
+            balance = 12000.10M,
+            bankName = "Canara",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 3,
+            accountName = "Offer",
+            accountType = "saving",
+            balance = 100.10M,
+            bankName = "SBI",
+            remark = "red_down_right_arrow.png"
+        },new Account()
+        {
+            accountId = 1,
+            accountName = "Main Account",
+            accountType = "current",
+            balance = 52000.10M,
+            bankName = "SBI",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 2,
+            accountName = "Home",
+            accountType = "saving",
+            balance = 12000.10M,
+            bankName = "Canara",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 3,
+            accountName = "Offer",
+            accountType = "saving",
+            balance = 100.10M,
+            bankName = "SBI",
+            remark = "red_down_right_arrow.png"
+        },new Account()
+        {
+            accountId = 1,
+            accountName = "Main Account",
+            accountType = "current",
+            balance = 52000.10M,
+            bankName = "SBI",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 2,
+            accountName = "Home",
+            accountType = "saving",
+            balance = 12000.10M,
+            bankName = "Canara",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 3,
+            accountName = "Offer",
+            accountType = "saving",
+            balance = 100.10M,
+            bankName = "SBI",
+            remark = "red_down_right_arrow.png"
+        },new Account()
+        {
+            accountId = 1,
+            accountName = "Main Account",
+            accountType = "current",
+            balance = 52000.10M,
+            bankName = "SBI",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 2,
+            accountName = "Home",
+            accountType = "saving",
+            balance = 12000.10M,
+            bankName = "Canara",
+            remark = "green_up_right_arrow.png"
+        },
+        new Account()
+        {
+            accountId = 3,
+            accountName = "Offer",
+            accountType = "saving",
+            balance = 100.10M,
+            bankName = "SBI",
+            remark = "red_down_right_arrow.png"
+        }
+    }; // observable list for GetAccounts
 
     AccountServices _accountServices;
 

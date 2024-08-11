@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MoneyManager.Services;
 using MoneyManager.Views;
+using UraniumUI;
 
 namespace MoneyManager
 {
@@ -13,6 +14,8 @@ namespace MoneyManager
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseUraniumUI()
+                .UseUraniumUIMaterial()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

@@ -12,13 +12,14 @@
              xmlns:services="clr-namespace:MoneyManager.Services"
              xmlns:view="clr-namespace:MoneyManager.Views">
 
-    <Grid RowDefinitions=".25*,.75*">
+
+    <Grid RowDefinitions=".15*,.75*">
 
 
 
         <!--Total balance Card on Home Page Design-->
         <Frame Padding="0" CornerRadius="15" Margin="5" BorderColor="Transparent">
-            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*">
+            <Grid RowDefinitions=".5*,.2*,.3*" ColumnDefinitions="*,*">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="1,0">
                         <GradientStop Color="Yellow"
@@ -68,26 +69,53 @@
         </Frame>
 
 
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" Margin="0,0,0,-2">
             <Grid>
                 <RoundRectangle CornerRadius="15,15,0,0"
-                                BackgroundColor="#4eaeae"
-                                Margin="5,5,5,-2"/>
+                                BackgroundColor="#FFFFEE"
+                                Margin="0,0,0,-2"/>
                 <!--Insert 10 Transaction History-->
-                <CollectionView x:DataType="viewmodel:AccountViewModel" ItemsSource="{Binding _accountList}" 
+                <Label Text="Transaction History" VerticalOptions="Start" Padding="0,5,5,0" HorizontalOptions="End"/>
+                <CollectionView x:DataType="viewModel:AccountViewModel" ItemsSource="{Binding _accountList}" 
                                 SelectionMode="Single" 
                                 SelectedItem="{Binding SelectedAccount}"
-                                x:Name="accountCollection">
+                                x:Name="accountCollection"
+                                Margin="10,20,10,10">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Account">
-                            <VerticalStackLayout>
+                            <Frame Padding="2,4,2,4" CornerRadius="5" Margin="2" BorderColor="DarkGray" BackgroundColor="Transparent" >
+                                <!--<Frame.Background>
+                                    <LinearGradientBrush EndPoint="1,0">
+                                        <GradientStop Color="LightBlue" Offset="0.1"></GradientStop>
+                                        <GradientStop Color="CadetBlue" Offset="1.0"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Frame.Background>-->
+                                <Grid ColumnDefinitions=".4*,*,*,*" RowDefinitions="*,*,*"  Padding="0,0,10,0">
+                                    <Grid.Resources>
+                                        <Style TargetType="{x:Type Label}">
+                                            <Setter Property="Margin" Value="0"/>
+                                            <Setter Property="BackgroundColor" Value="Transparent"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Image Grid.RowSpan="3" Source="{Binding remark}" WidthRequest="25" />
+                                    <Label Grid.Column="1"  Text="{Binding accountType}" FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="2" Text="{Binding accountName}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="3" Grid.RowSpan="2" Text="{Binding balance}" FontSize="24" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                    <Label Text="{Binding remark}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                                    <Label Text="{Binding bankName}" Grid.Column="3" Grid.Row="2"/>
+
+
+                                </Grid>
+                            </Frame>
+                            <!--<VerticalStackLayout Margin="0">
                                 <Label Text="{Binding accountName}" />
                                 <Label Text="{Binding accountType}" />
                                 <Label Text="{Binding bankName}" />
                                 <Label Text="{Binding balance}" />
                                 <Label Text="{Binding remark}" FontSize="Micro" />
                                 <Line/>
-                            </VerticalStackLayout>
+                            </VerticalStackLayout>-->
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
